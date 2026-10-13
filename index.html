@@ -1,4 +1,4 @@
-<title>Rimo Actions はじめてガイド</title>
+<title>Rimo Chat はじめてガイド</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;600;700&display=swap">
 <style>
@@ -313,7 +313,7 @@
     <div class="hd-row">
       <div class="brand" onclick="go('welcome')">
         <div class="brand-mark">${''}</div>
-        <div class="brand-text"><b>Rimo Actions</b><span>はじめてガイド</span></div>
+        <div class="brand-text"><b>Rimo Chat</b><span>はじめてガイド</span></div>
       </div>
       <div class="hd-progress">
         <div class="bar-track"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
@@ -374,7 +374,7 @@ function shotRow(items){ return `<div class="shot-row">${items.map(it=>`<div cla
 
 /* ---------------- content data ---------------- */
 const STEPS = [
-  {id:'s1', title:'Rimo Actionsとは', sub:'会議からタスクが生まれる仕組み', icon:'zap'},
+  {id:'s1', title:'Rimo Chatとは', sub:'会議からタスクが生まれる仕組み', icon:'zap'},
   {id:'s2', title:'タスクを実行する', sub:'AIに実際にやってもらう', icon:'play'},
   {id:'s3', title:'ナレッジで精度を上げる', sub:'自社の資料をAIに参照させる', icon:'bulb'},
   {id:'s4', title:'外部サービスと連携する', sub:'Gmail・Slack・カレンダーとつなぐ', icon:'link2'},
@@ -390,9 +390,10 @@ const HELP = {
   collection:'https://guide.rimo.app/ja/collections/17521170-rimo-actions',
   aiChat:'https://guide.rimo.app/ja/articles/10479720-aiチャットの基本操作',
   aiChatUse:'https://guide.rimo.app/ja/articles/14770840-aiチャット-会議中-会議後の使い方',
-  knowledgeOverview:'https://guide.rimo.app/ja/articles/15594952-rimo-ナレッジai-β版-とは',
-  knowledgeHowTo:'https://guide.rimo.app/ja/articles/15596043-rimo-ナレッジai-β版-の使い方-基本編-プロジェクトを作成してアクションを実行',
-  knowledgeManage:'https://guide.rimo.app/ja/articles/15611329-rimo-ナレッジai-β版-プロジェクトを管理する',
+  knowledgeOverview:'https://guide.rimo.app/ja/articles/15594952-rimo-ナレッジai-rimo-chat-とは',
+  knowledgeHowTo:'https://guide.rimo.app/ja/articles/15596043-rimo-ナレッジai-rimo-chat-の使い方-基本編-知識-を作成してタスクを実行',
+  knowledgeManage:'https://guide.rimo.app/ja/articles/15611329-rimo-ナレッジai-rimo-chat-知識-を管理する',
+  productSwitch:'https://guide.rimo.app/ja/articles/17348744-rimo-ナレッジai-rimo-chat-プロダクト切り替えで-rimo-chat-を表示する方法',
 };
 
 function helpBox(items){
@@ -418,7 +419,7 @@ function moreBox(iconName, title, body, cta, target){
 const VIEWS = {};
 
 VIEWS.welcome = () => `
-  <div class="eyebrow">${ic('zap',14)}RIMO ACTIONS オンボーディング</div>
+  <div class="eyebrow">${ic('zap',14)}RIMO CHAT オンボーディング</div>
   <h1 class="h-title">会議の"やること"を、<br>AIがそのまま片付ける。</h1>
   <p class="h-desc">Rimo Voiceの議事録からAIがタスクを自動で見つけ出し、資料づくりからメール送信までをAIエージェントが代行します。仕組みの理解から、実行・ナレッジ・連携・自動化まで、実際の画面を見ながら順番に確認していきましょう。</p>
   <div class="badges">
@@ -439,36 +440,44 @@ VIEWS.welcome = () => `
 VIEWS.s1 = () => `
   <div class="eyebrow">STEP 1 / 5</div>
   <h1 class="h-title">会議の議事録から、<br>AIが"やること"を見つけて動く</h1>
-  <p class="h-desc">これまでのAI議事録は、ネクストアクションを箇条書きにするところまででした。会議のあとの実作業――資料をつくる、メールを書く、予定を入れる――は結局人の手で行う必要がありました。Rimo Actionsは、その続きを引き受けます。</p>
+  <p class="h-desc">これまでのAI議事録は、ネクストアクションを箇条書きにするところまででした。会議のあとの実作業――資料をつくる、メールを書く、予定を入れる――は結局人の手で行う必要がありました。Rimo Chatは、その続きを引き受けます。</p>
   ${badges([{i:'shield',t:'対象プラン：法人プラン（オプション）／チームプラン／プロプラン'},{i:'users',t:'利用権限：すべてのユーザー'}])}
   ${shot('assets/s1/before-after.png','会議後の作業をAIが引き継ぐイメージ図','ヘルプセンターより：会議後の作業をAIが引き継ぐ')}
+  ${tip('info','info','名称について','Rimo Chatは、以前「Rimo Actions」と呼ばれていた機能です。画面やヘルプセンターの一部では、いまも「Actions」という表記が残っています。')}
 
   <div class="sec">
-    <div class="sec-head"><span class="sec-tag">1-1</span><h3>タスクを自動で見つける</h3></div>
+    <div class="sec-head"><span class="sec-tag">1-1</span><h3>Rimo Chatを開く</h3></div>
+    <p>Rimo Chatは、Rimoの他のプロダクトと切り替えて使います。<b>画面左上のRimoロゴ（プロダクト名）をクリック</b>すると、プロダクトの一覧（Rimo／Rimo Interviewer／Rimo Chat）が表示されるので、「Rimo Chat」を選んでください。</p>
+    ${shotRow([{src:'assets/switch/1-logo-click.png',alt:'画面左上のRimoロゴをクリック'},{src:'assets/switch/2-product-menu.png',alt:'プロダクトの切り替えメニューから「Rimo Chat」を選択'}])}
+    ${shot('assets/switch/3-rimo-chat.png','「Rimo Chat」に切り替わった画面')}
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><span class="sec-tag">1-2</span><h3>タスクを自動で見つける</h3></div>
     <p>Rimo Voiceの議事録をもとに、AIが会議で決まった「やるべきこと」を自動で抽出し、実行計画まで提案します。会議が終われば、もうタスク一覧ができています。</p>
     ${shot('assets/s1/feature1-extract.png','AIによるタスク自動抽出の画面')}
   </div>
 
   <div class="sec">
-    <div class="sec-head"><span class="sec-tag">1-2</span><h3>資料や文書を自動で作る</h3></div>
+    <div class="sec-head"><span class="sec-tag">1-3</span><h3>資料や文書を自動で作る</h3></div>
     <p>Excel表・スライド・ドキュメントの作成はもちろん、Googleカレンダーへの予定登録やGmailの下書き作成まで、成果物の形でアウトプットします。</p>
     ${shot('assets/s1/feature2-generate.png','成果物の自動生成の画面')}
   </div>
 
   <div class="sec">
-    <div class="sec-head"><span class="sec-tag">1-3</span><h3>そのまま送る・共有する</h3></div>
-    <p>できあがった成果物は、Gmailでの送信、Slackでの共有、GitHubへの登録まで、Rimo Actionsが直接行えます。「作って終わり」ではなく「届けて終わり」まで進みます。</p>
+    <div class="sec-head"><span class="sec-tag">1-4</span><h3>そのまま送る・共有する</h3></div>
+    <p>できあがった成果物は、Gmailでの送信、Slackでの共有、GitHubへの登録まで、Rimo Chatが直接行えます。「作って終わり」ではなく「届けて終わり」まで進みます。</p>
     ${shot('assets/s1/feature3-send.png','成果物の直接送信・共有の画面')}
   </div>
 
   <div class="sec">
-    <div class="sec-head"><span class="sec-tag">1-4</span><h3>その場で確認・修正できる</h3></div>
+    <div class="sec-head"><span class="sec-tag">1-5</span><h3>その場で確認・修正できる</h3></div>
     <p>AIの処理状況はリアルタイムに表示され、仕上がりが違えばチャットで追加の指示を送るだけで修正されます。</p>
     ${shot('assets/s1/feature4-realtime.png','AIの作業をリアルタイムに確認・修正する画面')}
   </div>
 
   ${moreBox('bulb','活用イメージを見る','サイトデザイン案の自動生成など、実際の使われ方を4つ紹介','活用事例を見る','tips')}
-  ${helpBox([['Rimo Actionsとは', HELP.overview],['Rimo Actionsの活用事例', HELP.cases]])}
+  ${helpBox([['Rimo Actionsとは', HELP.overview],['Rimo Actionsの活用事例', HELP.cases],['プロダクト切り替えで「Rimo Chat」を表示する方法', HELP.productSwitch]])}
   ${navFoot('welcome','s2')}
 `;
 
@@ -486,7 +495,7 @@ VIEWS.s2 = () => `
 
   <div class="sec">
     <div class="sec-head"><span class="sec-tag">2-2</span><h3>やりたいタスクがないときは、自分で作る</h3></div>
-    <p>自動で抽出されたタスクの中に、やりたいことが見当たらないこともあります。その場合は自分で追加できます。ノート右側の「AIに依頼」タブを開き、チャット入力欄の下にある<b>「タスクを作成」ボタンをオンにした状態で指示を送る</b>と、その内容でRimo Actionsのタスクが作成され、そのまま実行まで進みます。</p>
+    <p>自動で抽出されたタスクの中に、やりたいことが見当たらないこともあります。その場合は自分で追加できます。ノート右側の「AIに依頼」タブを開き、チャット入力欄の下にある<b>「タスクを作成」ボタンをオンにした状態で指示を送る</b>と、その内容でRimo Chatのタスクが作成され、そのまま実行まで進みます。</p>
     ${shot('assets/s2/2-2-task-create-button.png','「AIに依頼」タブのチャット入力欄にある「タスクを作成」ボタン','ヘルプセンターより：「AIに依頼」タブの画面構成。左下が「タスクを作成」ボタンです')}
     ${tip('info','chat','指示の例','「今日の決定事項をもとにメール文案を作って」「提案内容をまとめた資料のドラフトを作成して」のように、やってほしいことをそのまま書けば大丈夫です。')}
   </div>
@@ -503,11 +512,11 @@ VIEWS.s2 = () => `
     <div class="path-cards" style="grid-template-columns:1fr 1fr 1fr">
       <div class="path-card"><span class="ic-wrap">${ic('link2',16)}</span><div><b>外部連携で調整</b><span>Gmail等の設定を反映</span></div></div>
       <div class="path-card"><span class="ic-wrap">${ic('chat',16)}</span><div><b>チャットで指示</b><span>言葉で条件を伝える</span></div></div>
-      <div class="path-card"><span class="ic-wrap">${ic('doc',16)}</span><div><b>参照資料を紐付け</b><span>STEP3のナレッジ（プロジェクト）を指定</span></div></div>
+      <div class="path-card"><span class="ic-wrap">${ic('doc',16)}</span><div><b>参照する知識を指定</b><span>STEP3で作った「知識」を紐付け</span></div></div>
     </div>
     ${shotRow([{src:'assets/s2/2-3-plan-a.png',alt:'実行プラン画面1'},{src:'assets/s2/2-3-plan-b.png',alt:'実行プラン画面2'}])}
     ${shot('assets/s2/2-3-execute-btn.png','「実行する」ボタンの画面')}
-    ${shot('assets/s2/2-3-project-link.png','参照プロジェクトを紐付ける画面')}
+    ${shot('assets/s2/2-3-project-link.png','参照する知識を紐付ける画面')}
   </div>
 
   <div class="sec">
@@ -537,35 +546,38 @@ VIEWS.s2 = () => `
 VIEWS.s3 = () => `
   <div class="eyebrow">STEP 3 / 5</div>
   <h1 class="h-title">自社の資料を、<br>AIの"知識"として持たせる</h1>
-  <p class="h-desc">Rimo Actionsは、そのままでも会議内容から成果物を作れます。ただし本当の力を発揮するのは、過去の提案書・マニュアル・社内規定といった自社の資料を「プロジェクト」というナレッジとして持たせたときです。汎用的な回答ではなく、自社ならではのやり方・言い回し・実績を踏まえた成果物になります。</p>
+  <p class="h-desc">Rimo Chatは、そのままでも会議内容から成果物を作れます。ただし本当の力を発揮するのは、過去の提案書・マニュアル・社内規定といった自社の資料を「知識」として持たせたときです。汎用的な回答ではなく、自社ならではのやり方・言い回し・実績を踏まえた成果物になります。</p>
   ${badges([{i:'shield',t:'対象プラン：法人プラン（オプション）／チームプラン／プロプラン'},{i:'users',t:'利用権限：すべてのユーザー'}])}
-  ${shot('assets/knowledge/flow.gif','プロジェクトを作成してアクションを実行するまでの流れ')}
 
   <div class="sec">
-    <div class="sec-head"><span class="sec-tag">3-1</span><h3>「プロジェクト」を新規作成する</h3></div>
-    <p>グローバルメニューの「プロジェクトβ版」から「新規作成」。タイトル・説明・アイコンを設定し、公開範囲を「プライベート（作成者のみ）」か「パブリック（組織内で共有）」から選びます。</p>
-    ${shotRow([{src:'assets/knowledge/new-project.png',alt:'プロジェクトの新規作成画面'},{src:'assets/knowledge/visibility.png',alt:'公開範囲の設定'}])}
+    <div class="sec-head"><span class="sec-tag">3-1</span><h3>「知識」を新規作成する</h3></div>
+    <p>Rimo Chatに切り替えたら、画面左側の<b>「知識」</b>をクリックし、知識一覧画面で<b>「新規作成」</b>へ。タイトル（必須）と説明を入力して「保存する」を押します。</p>
+    ${shotRow([{src:'assets/knowledge-v2/k1-knowledge-button.png',alt:'画面左側の「知識」ボタン'},{src:'assets/knowledge-v2/k2-new.png',alt:'知識一覧画面の「新規作成」'}])}
+    ${shot('assets/knowledge-v2/k3-title-desc.png','タイトルと説明を入力する画面')}
   </div>
 
   <div class="sec">
-    <div class="sec-head"><span class="sec-tag">3-2</span><h3>資料をナレッジとして追加する</h3></div>
-    <p>「紐づいている知識」から「追加」→「アップロード」。PDF・Word・PowerPoint・Excelなどのファイルはもちろん、フォルダ・テキストの直接入力・URL・Rimo Voiceのノートもナレッジとして追加できます。フォルダ階層はそのままAIが認識します。</p>
-    ${shot('assets/knowledge/add-knowledge.png','ナレッジを追加する画面（ファイル・フォルダ・テキスト・URL・ノート）')}
+    <div class="sec-head"><span class="sec-tag">3-2</span><h3>資料やノートを紐づける</h3></div>
+    <p>「追加」→「アップロード」から、ファイル・フォルダ・テキスト・URLを登録できます（推奨形式：PDF／DOCX／DOC／PPTX／TXT／MD／XLSX／CSV／PNG／JPG）。フォルダは階層を保ったままアップロードできます。Rimoのノートを紐づけたい場合は「設定を変更」→「追加する」から選択してください。</p>
+    ${shotRow([{src:'assets/knowledge-v2/k4-upload.png',alt:'ファイル・フォルダ・テキスト・URLをアップロードする画面'},{src:'assets/knowledge-v2/k5-add-notes.png',alt:'Rimoのノートを知識に追加する画面'}])}
+    ${tip('info','info','あとから追加・削除もできます','作成後でも、設定の変更やファイルの追加・削除が可能です。まずは手元にある資料を入れて、使いながら育てていくのがおすすめです。')}
   </div>
 
   <div class="sec">
-    <div class="sec-head"><span class="sec-tag">3-3</span><h3>タスクやテンプレートから「参照プロジェクト」を指定する</h3></div>
-    <p>タスクの実行画面やテンプレートの詳細画面にある「参照プロジェクト」で、作成したプロジェクトを指定します。以後、そのタスク（テンプレート）を実行するたびに、AIはこのナレッジを踏まえて成果物を作ります。プロジェクトを複数持っている場合、指定がなくてもAIが内容に応じて最適なものを自動選択することもあります。</p>
-    ${shot('assets/knowledge/action-select-project.png','参照するプロジェクトを指定する画面')}
+    <div class="sec-head"><span class="sec-tag">3-3</span><h3>チャットで知識を参照しながら依頼する</h3></div>
+    <p>画面左側の<b>「新規チャット」</b>からチャット画面を開きます。メッセージ欄の<b>「すべてのナレッジ」</b>で参照する知識を選べます（未選択なら全ての知識を横断します）。<b>「ウェブ検索」</b>をオンにすると、インターネットの最新情報も踏まえて回答します。あとは「〇〇の資料を参考に、顧客向けメールの下書きを作って」のように依頼するだけです。</p>
+    ${shotRow([{src:'assets/knowledge-v2/c1-chat-screen.png',alt:'Rimo Chatのチャット画面'},{src:'assets/knowledge-v2/c2-compose.png',alt:'参照する知識やウェブ検索を指定して依頼する'}])}
+    ${tip('info','doc','ファイルを添付して依頼することもできます','「＋」ボタン、ドラッグ&ドロップ、貼り付けで添付できます。上限は1ターンあたり最大10ファイル（画像は最大8枚）、1ファイル10MBまでです。')}
   </div>
 
   <div class="sec">
-    <div class="sec-head"><span class="sec-tag">3-4</span><h3>チャット画面から直接質問・依頼することもできる</h3></div>
-    <p>グローバルメニューの「アクションβ版」からは、プロジェクトと必要ならサービス連携を指定したうえで、チャット形式で質問や依頼ができます。「〇〇の資料を参考に、顧客向けメールの下書きを作って」のように送るだけです。ノートから抽出された未対応のタスクをここでまとめて確認することもできます。</p>
-    ${shotRow([{src:'assets/knowledge/chat-confirm-tasks.png',alt:'未対応タスクをチャットで確認する例'},{src:'assets/knowledge/chat-execute-result.png',alt:'チャットでタスクを実行し成果物を確認する例'}])}
+    <div class="sec-head"><span class="sec-tag">3-4</span><h3>成果物を確認して、知識として貯める</h3></div>
+    <p>情報が足りない場合はAIが追加で質問するので、都度回答してください。できあがった成果物はクリックすると右側で内容を確認でき、<b>共有・編集・知識へ保存・ダウンロード・コピー</b>ができます。よくできた成果物を知識として保存しておけば、次回以降の精度がさらに上がります。</p>
+    ${shot('assets/knowledge-v2/c3-result.png','チャットから成果物を作成した例')}
+    ${shot('assets/knowledge-v2/c4-artifact-actions.png','成果物に対する操作（共有・編集・知識へ保存・ダウンロード・コピー）')}
   </div>
 
-  ${helpBox([['Rimo ナレッジAI（β版）とは', HELP.knowledgeOverview],['Rimo ナレッジAI（β版）の使い方‐基本編', HELP.knowledgeHowTo],['Rimo ナレッジAI（β版）‐プロジェクトを管理する', HELP.knowledgeManage]])}
+  ${helpBox([['Rimo ナレッジAI（Rimo Chat）とは', HELP.knowledgeOverview],['使い方‐基本編：「知識」を作成してタスクを実行', HELP.knowledgeHowTo],['「知識」を管理する', HELP.knowledgeManage],['プロダクト切り替えで「Rimo Chat」を表示する方法', HELP.productSwitch]])}
   ${navFoot('s2','s4')}
 `;
 
@@ -677,15 +689,15 @@ VIEWS.s5 = () => `
     ${tip('info','shield','作成できるのは管理者だけ','テンプレートの新規作成・編集は特権管理者・管理者のみ行えます。メンバーへの展開は管理者に依頼してください。')}
   </div>
 
-  ${moreBox('bulb','参照プロジェクトも指定できる','テンプレート詳細画面の「参照プロジェクト」から、STEP3で作ったナレッジを紐付けると精度が上がります','ナレッジの設定を見る','s3')}
-  ${helpBox([['Rimo Actions‐タスクテンプレートを作成する', HELP.template],['Rimo ナレッジAI（β版）とは', HELP.knowledgeOverview]])}
+  ${moreBox('bulb','参照する知識も指定できる','テンプレート詳細画面の「参照する知識」から、STEP3で作った知識を紐付けると精度が上がります','知識の設定を見る','s3')}
+  ${helpBox([['Rimo Actions‐タスクテンプレートを作成する', HELP.template],['Rimo ナレッジAI（Rimo Chat）とは', HELP.knowledgeOverview]])}
   ${navFoot('s4','complete','完了する')}
 `;
 
 VIEWS.complete = () => `
   <div class="complete-check">${ic('checkCircle',30)}</div>
   <div class="eyebrow">${ic('flag',14)}ALL DONE</div>
-  <h1 class="h-title">これで、Rimo Actionsの基本は完了です</h1>
+  <h1 class="h-title">これで、Rimo Chatの基本は完了です</h1>
   <p class="h-desc">会議からタスクが生まれる仕組みを理解し、実行・ナレッジ・連携・自動化の一通りを確認しました。あとは実際の会議で試してみましょう。</p>
   <div class="recap">
     ${STEPS.map((s,i)=>`<div class="recap-row"><span class="side-num">${ic('check',12)}</span><span>${s.title}</span></div>`).join('')}
@@ -712,7 +724,7 @@ const CASES = [
   {img:'assets/cases/case4-ads-sim-1.png', t:'分析から通知まで一気通貫', d:'広告シミュレーションの分析、資料作成、メール文面の生成、カレンダーへの招待、Slackへの通知までを一気通貫で完了させます。'},
 ];
 VIEWS.tips = () => `
-  <div class="eyebrow">${ic('bulb',14)}RIMO ACTIONS 活用事例</div>
+  <div class="eyebrow">${ic('bulb',14)}RIMO CHAT 活用事例</div>
   <h1 class="h-title">こんなふうに使われています</h1>
   <p class="h-desc">実際によく使われている4つのパターンです。気になるものだけ確認してください。</p>
   ${CASES.map(c=>`<div class="case-card">${shot(c.img,c.t)}<div class="case-body"><span class="k">${ic('zap',12)}活用例</span><h4>${c.t}</h4><p>${c.d}</p></div></div>`).join('')}
@@ -731,7 +743,7 @@ const FAQ = [
   {q:'テンプレートを作成する権限がない', a:'タスクテンプレートの作成・編集は特権管理者・管理者のみに限られています。組織の管理者に作成を依頼してください。'},
 ];
 VIEWS.trouble = () => `
-  <div class="eyebrow">${ic('alert',14)}RIMO ACTIONS トラブルシュート</div>
+  <div class="eyebrow">${ic('alert',14)}RIMO CHAT トラブルシュート</div>
   <h1 class="h-title">困ったときは</h1>
   <p class="h-desc">よくいただくご質問と対処方法をまとめました。当てはまるものを開いて確認してください。</p>
   <div id="faqList">
@@ -749,7 +761,7 @@ const ORDER = ['welcome', ...STEPS.map(s=>s.id), 'complete'];
 /* Bump this whenever step content/order changes, so old readers' saved
    checkmarks (which no longer reflect what they actually saw) are cleared
    instead of silently showing as "done" against the new content. */
-const GUIDE_VERSION = 'v7-add-manual-task-creation';
+const GUIDE_VERSION = 'v8-rename-to-rimo-chat';
 let progress = new Set();
 try{
   const stored = JSON.parse(localStorage.getItem('rimoActionsGuideProgress')||'null');
