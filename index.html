@@ -421,7 +421,7 @@ const VIEWS = {};
 VIEWS.welcome = () => `
   <div class="eyebrow">${ic('zap',14)}RIMO CHAT オンボーディング</div>
   <h1 class="h-title">会議の"やること"を、<br>AIがそのまま片付ける。</h1>
-  <p class="h-desc">Rimo Voiceの議事録からAIがタスクを自動で見つけ出し、資料づくりからメール送信までをAIエージェントが代行します。仕組みの理解から、実行・ナレッジ・連携・自動化まで、実際の画面を見ながら順番に確認していきましょう。</p>
+  <p class="h-desc">Rimoの議事録からAIがタスクを自動で見つけ出し、資料づくりからメール送信までをAIエージェントが代行します。仕組みの理解から、実行・ナレッジ・連携・自動化まで、実際の画面を見ながら順番に確認していきましょう。</p>
   <div class="badges">
     <span class="badge">${ic('play',13)}所要時間の目安：約10分</span>
     <span class="badge accent">${ic('check',13)}好きなところから見返せます</span>
@@ -454,7 +454,7 @@ VIEWS.s1 = () => `
 
   <div class="sec">
     <div class="sec-head"><span class="sec-tag">1-2</span><h3>タスクを自動で見つける</h3></div>
-    <p>Rimo Voiceの議事録をもとに、AIが会議で決まった「やるべきこと」を自動で抽出し、実行計画まで提案します。会議が終われば、もうタスク一覧ができています。</p>
+    <p>Rimoの議事録をもとに、AIが会議で決まった「やるべきこと」を自動で抽出し、実行計画まで提案します。会議が終われば、もうタスク一覧ができています。</p>
     ${shot('assets/s1/feature1-extract.png','AIによるタスク自動抽出の画面')}
   </div>
 
@@ -617,6 +617,8 @@ VIEWS.s4 = () => `
   ${badges([{i:'shield',t:'対象プラン：法人プラン／チームプラン／プロプラン'},{i:'users',t:'利用権限：すべてのユーザー'}])}
   ${shot('assets/s3/3-0-settings-screen.png','設定 → Actions →「サービス連携」の画面','設定 → Actions →「サービス連携」からアクセスします')}
   ${tip('info','settings','連携できるサービスの最新の一覧はここで確認できます','対応サービスは随時追加されます。最新の一覧・詳細は、Rimoの「設定」メニュー内 Actions の「サービス連携」からいつでも確認できます。')}
+  ${tip('warn','alert','会社の設定で連携がブロックされることがあります','Microsoft 365やGoogle Workspaceでは、管理者が許可していない外部アプリとの連携を組織全体で制限していることがあります。この場合、以下の手順どおりに操作しても「管理者の承認が必要です」と表示されたり、そのままブロックされたりします。Rimo側の不具合ではないため、社内のIT管理者に許可を依頼する必要があります。')}
+  ${moreBox('alert','連携できないときの対処法','Microsoft／Googleそれぞれについて、ユーザー側の対応と管理者側の設定手順をまとめています','困ったときはを開く','trouble')}
 
   <div class="sec">
     <div class="sec-head"><h3>連携できるサービス</h3></div>
@@ -732,7 +734,7 @@ VIEWS.tips = () => `
 `;
 
 const FAQ = [
-  {q:'タスクが自動抽出されない', a:'対象プラン（法人プラン／チームプラン／プロプラン）かどうかをまずご確認ください。抽出には会議終了後、数分ほどかかります。Rimo Voice側の文字起こしが完了しているかもあわせて確認してください。'},
+  {q:'タスクが自動抽出されない', a:'抽出には会議終了後、数分ほどかかります。少し待っても表示されない場合は、Rimo側の文字起こしが完了しているかをあわせて確認してください。'},
   {q:'「実行する」を押しても処理が進まない', a:'使用しているツールの権限が「承認が必要」になっていないか、設定の「サービス連携」から確認してください。処理中にAIから確認を求められている場合もあるので、画面の通知もチェックしましょう。'},
   {q:'外部サービスと連携できない／連携を解除したい', a:'連携の解除は「連携を解除」→確認メッセージでもう一度クリック→完了、の3手順です。再連携もワンクリックで行えます。'},
   {q:'【Microsoft】Outlook・Teams・OneDriveなどと連携しようとすると、管理者の承認が必要と表示される／ブロックされる', a:'これはRimo側の不具合ではなく、組織のMicrosoft 365（Entra ID）テナントに設定されているセキュリティポリシーによるものです。ユーザーが自分の判断で外部アプリにメール・カレンダー・ファイルへのアクセス許可を与えられないよう、管理者の承認を必須にしている組織があります。<br><br>次のような表示が出たら、この状態に該当します。<br>・「Need admin approval（管理者の承認が必要です）」<br>・「AADSTS90094: An administrator of ○○ has set a policy that prevents you from granting ○○ the permissions it is requesting.（組織の管理者が、このアプリへの許可付与を禁止するポリシーを設定しています）」<br>・「AADSTS65001: The user or administrator has not consented to use the application…」<br><br>画面に「リクエストを送信」のようなボタンがあれば押してください。社内のMicrosoft 365管理者に承認依頼が届きます。ボタンがなく案内だけの場合は、承認依頼の仕組み自体が組織で無効なので、IT管理者に直接依頼してください。<div class="admin-note"><b>管理者の方へ①：いちばん手軽な方法</b>管理者アカウント自身でRimoにログインし、同じ連携ボタンを押してください。同意画面に表示される「<strong>組織の代理として同意する（Consent on behalf of your organization）</strong>」のチェックボックスをオンにして承認すれば、その場で組織全体に対して許可できます。<br><br><b>管理者の方へ②：ユーザーから承認リクエストが届いている場合</b><ol><li>Cloud Application Administrator以上の権限で<a href="https://entra.microsoft.com" target="_blank" rel="noopener">Microsoft Entra 管理センター</a>にサインイン。</li><li>「エンタープライズ アプリケーション」→「アクティビティ」→「管理者の同意の要求」を開く。</li><li>「My Pending（自分宛の保留中）」タブで該当リクエストを開き、権限を確認して承認する。</li></ol>対応できるのは、自分がレビュアーに指定された後に作成されたリクエストのみです。<br><br><b>管理者の方へ③：管理センターから直接許可する場合</b><ol><li>「エンタープライズ アプリケーション」を開き、<strong>「アプリケーションの種類」を「すべてのアプリケーション」に変更</strong>してから検索する（既定の絞り込みのままだと表示されないことがあります）。</li><li>該当アプリを開き「セキュリティ」→「アクセス許可」で要求内容を確認して「管理者の同意を付与」をクリック。</li></ol>検索しても見つからない場合は、まだテナントにアプリが登録されていません。対象ユーザーに一度連携を試してもらってから再検索するか、連携ボタンを押した際に遷移するサインイン画面のアドレスバーに含まれる<strong>client_id</strong>の値（＝アプリケーションID。Microsoftのトラブルシュート手順でもこの方法が案内されています）を控え、その値で検索してください。<br><br><b>代替策：組織全体の同意ポリシー自体を緩める</b>低リスクな権限であればユーザー自身の判断で同意できるようにしたい場合は、「エンタープライズ アプリケーション」→「同意と許可」→「ユーザーの同意の設定」を、「検証済み発行元のアプリ、かつ低リスクの権限に限り、ユーザーの同意を許可」に変更します（対象権限を事前に「権限の分類」で低リスクに指定する必要あり）。Rimoに限らず全アプリに影響するため、個別許可より慎重な検討が必要です。</div><br>詳しくはMicrosoft公式の<a href="https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/user-admin-consent-overview" target="_blank" rel="noopener">User and admin consent overview ↗</a>および<a href="https://learn.microsoft.com/ja-jp/troubleshoot/entra/entra-id/app-integration/troubleshoot-consent-issues" target="_blank" rel="noopener">同意に関する問題のトラブルシューティング ↗</a>をご覧ください。'},
@@ -761,7 +763,7 @@ const ORDER = ['welcome', ...STEPS.map(s=>s.id), 'complete'];
 /* Bump this whenever step content/order changes, so old readers' saved
    checkmarks (which no longer reflect what they actually saw) are cleared
    instead of silently showing as "done" against the new content. */
-const GUIDE_VERSION = 'v8-rename-to-rimo-chat';
+const GUIDE_VERSION = 'v9-rimo-naming-and-admin-note';
 let progress = new Set();
 try{
   const stored = JSON.parse(localStorage.getItem('rimoActionsGuideProgress')||'null');
